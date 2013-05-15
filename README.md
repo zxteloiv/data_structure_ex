@@ -1,4 +1,4 @@
 Data Structure
 ============================
 
-implementation exercise, in python and C
+Implementation exercise, in python and C, mainly containing data structures coverd by Coursera Algorithm course by Robert Sedgewick.
