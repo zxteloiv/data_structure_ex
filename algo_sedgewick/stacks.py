@@ -1,7 +1,5 @@
 #!/usr/bin/python2
 
-import sys
-
 # 1. Implement a stack by using linked list first
 class ListStack:
     class Node:
@@ -25,16 +23,16 @@ class ListStack:
         self.head = Node()
 
     def Push(self, val):
-        pass
+        newNode = Node()
+        newNode.val = val
+        newNode.next = self.head.next
+        self.head.next = newNode
 
     def Pop(self):
-        pass
+        val = self.head.next.val
+        self.head = self.head.next
+        return val
 
     def IsEmpty(self):
         return self.head.next == None
-        
-if __name__ == "__main__":
-    if False:
-        pass
-    else:
-        print "Usage: %s " % sys.argv[0]
+
