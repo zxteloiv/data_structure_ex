@@ -20,15 +20,18 @@ class ListStack:
         next = property(getnext, setnext)
 
     def __init__(self):
-        self.head = Node()
+        self.head = self.Node()
 
     def Push(self, val):
-        newNode = Node()
+        newNode = self.Node()
         newNode.val = val
         newNode.next = self.head.next
         self.head.next = newNode
+        return self
 
     def Pop(self):
+        if (self.IsEmpty()):
+            return None
         val = self.head.next.val
         self.head = self.head.next
         return val
