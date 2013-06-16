@@ -71,7 +71,7 @@ class TestListStack(unittest.TestCase):
 
 class TestArrayStack(unittest.TestCase):
     def setUp(self):
-        print '\nRun test for ArrayStack\n'
+        print '\nRun test for ArrayStack'
 
     def test_init(self):
         s = ArrayStack(20)
