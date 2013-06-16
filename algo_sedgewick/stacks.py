@@ -98,8 +98,8 @@ class Stack:
         self.stack.append(val)
         return self
 
-    def Pop(self, val):
-        return self.stack.pop()
+    def Pop(self):
+        return self.stack.pop() if self.Size() > 0 else None
 
     def IsEmpty(self):
         return 0 == len(self.stack)
