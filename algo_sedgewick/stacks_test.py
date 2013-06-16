@@ -149,5 +149,41 @@ class TestArrayStack(unittest.TestCase):
         self.assertEqual(s.ReservedSize(), 10)
         self.assertEqual(s.Pop(), None)
 
+class TestStack(unittest.TestCase):
+    def setUp(self):
+        print "\nRun test for Stack"
+        
+    def test_stack(self):
+        s = Stack()
+        self.assertTrue(s.IsEmpty())
+        self.assertEqual(s.Size(), 0)
+        self.assertEqual(s.Pop(), None)
+        s.Push(10)
+        self.assertTrue(not s.IsEmpty())
+        self.assertEqual(s.Size(), 1)
+        self.assertEqual(s.Pop(), 10)
+        self.assertEqual(s.Size(), 0)
+        self.assertEqual(s.Pop(), None)
+        self.assertTrue(s.IsEmpty())
+        s.Push(10).Push(20)
+        self.assertTrue(not s.IsEmpty())
+        self.assertEqual(s.Size(), 2)
+        s.Push(30).Push(40)
+        self.assertTrue(not s.IsEmpty())
+        self.assertEqual(s.Size(), 4)
+        self.assertEqual(s.Pop(), 40)
+        self.assertEqual(s.Size(), 3)
+        self.assertTrue(not s.IsEmpty())
+        self.assertEqual(s.Pop(), 30)
+        self.assertEqual(s.Size(), 2)
+        self.assertTrue(not s.IsEmpty())
+        self.assertEqual(s.Pop(), 20)
+        self.assertEqual(s.Size(), 1)
+        self.assertTrue(not s.IsEmpty())
+        self.assertEqual(s.Pop(), 10)
+        self.assertEqual(s.Size(), 0)
+        self.assertTrue(s.IsEmpty())
+        self.assertEqual(s.Pop(), None)
+
 if __name__ == '__main__':
     unittest.main()
