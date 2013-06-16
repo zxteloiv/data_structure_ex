@@ -60,6 +60,14 @@ class TestListStack(unittest.TestCase):
         self.assertEqual(s.Size(), 3)
         s.Push(10)
         self.assertEqual(s.Size(), 4)
+        s.Pop()
+        self.assertEqual(s.Size(), 3)
+        s.Pop()
+        self.assertEqual(s.Size(), 2)
+        s.Pop()
+        self.assertEqual(s.Size(), 1)
+        s.Pop()
+        self.assertEqual(s.Size(), 0)
 
 class TestArrayStack(unittest.TestCase):
     def setUp(self):
