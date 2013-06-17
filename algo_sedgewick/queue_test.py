@@ -69,7 +69,6 @@ class TestListQueue(unittest.TestCase):
         q.Dequeue()
         self.assertEqual(q.Size(), 0)
 
-"""
 class TestArrayQueue(unittest.TestCase):
     def setUp(self):
         print '\nRun test for ArrayQueue\n'
@@ -101,13 +100,13 @@ class TestArrayQueue(unittest.TestCase):
         self.assertTrue(not q.IsEmpty())
         self.assertEqual(q.Dequeue(), 10)
         q.Enqueue(10).Enqueue(20).Enqueue(30)
-        self.assertEqual(q.Dequeue(), 30)
+        self.assertEqual(q.Dequeue(), 10)
         q.Enqueue(40)
-        self.assertEqual(q.Dequeue(), 40)
-        self.assertTrue(not q.IsEmpty())
         self.assertEqual(q.Dequeue(), 20)
         self.assertTrue(not q.IsEmpty())
-        self.assertEqual(q.Dequeue(), 10)
+        self.assertEqual(q.Dequeue(), 30)
+        self.assertTrue(not q.IsEmpty())
+        self.assertEqual(q.Dequeue(), 40)
         self.assertTrue(q.IsEmpty())
         self.assertEqual(q.Dequeue(), None)
 
@@ -149,7 +148,6 @@ class TestArrayQueue(unittest.TestCase):
         q.Dequeue(); q.Dequeue(); q.Dequeue(); q.Dequeue();
         self.assertEqual(q.ReservedSize(), 10)
         self.assertEqual(q.Dequeue(), None)
-"""
 
 class TestQueue(unittest.TestCase):
     def setUp(self):

@@ -4,7 +4,7 @@
 
 from collections import deque
 
-# 1. Implement a stack by using linked list first
+# 1. Implement a queue by using linked list first
 class ListQueue:
     class Node:
         def __init__(self):
@@ -66,25 +66,59 @@ class ListQueue:
 
 # 2. implement a queue using an array
 class ArrayQueue:
-    def __init__(self, stack_size=10):
-        pass
+    def __init__(self, queue_size=10):
+        self.head = 0
+        self.len = 0
+        self.queue_size = queue_size
+        self.queue = range(queue_size)
         
     def Enqueue(self, val):
+        if self.head > 0:
+            ins_pos = self.head - 1
+        else:
+            ins_pos = self.queue_size - 1
+        self.queue[ins_pos] = val
+        self.head = ins_pos
+        self.len = self.len + 1
+        
+        # extend(double) the size of stack when it is full
+        if self.len == self.queue_size:
+            new_queue = range(2 * self.queue_size)
+            # deep copy, pos starts from 0
+            for pos in range(self.len):
+                val_pos = (self.head + pos) % self.queue_size
+                new_queue[pos] = self.queue[val_pos]
+            self.queue = new_queue
+            self.queue_size = self.queue_size * 2
         return self
-        pass
 
     def Dequeue(self):
-        return None
-        pass
+        if self.len == 0:
+            return None
+        rm_pos = (self.head + self.len - 1) % self.queue_size
+        val = self.queue[rm_pos]
+        self.len = self.len - 1
+
+        # shrink(halve) the size of stack when it is 1/4 full
+        # but at least 10 room is reserved
+        if self.len <= self.queue_size / 4 and self.queue_size > 10:
+            new_queue = range(self.queue_size / 2)
+            # deep copy, pos starts from 0
+            for pos in range(self.len):
+                val_pos = (self.head + pos) % self.queue_size
+                new_queue[pos] = self.queue[val_pos]
+            self.queue = new_queue
+            self.queue_size = self.queue_size / 2
+        return val
 
     def IsEmpty(self):
-        pass
+        return self.len == 0
 
     def Size(self):
-        pass
+        return self.len
 
     def ReservedSize(self):
-        pass
+        return self.queue_size
 
 # 3. implement a queue using a library provided by python
 class Queue:
