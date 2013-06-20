@@ -3,7 +3,7 @@
 def swap(arr, i, j):
     tmp = arr[i]
     arr[i] = arr[j]
-    arr[j] = arr[i]
+    arr[j] = tmp
 
 # 1. selection sort
 # During each iteration, select the minimum and swap to the most left
