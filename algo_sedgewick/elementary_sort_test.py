@@ -4,15 +4,15 @@ import unittest
 from elementary_sort import SelectionSort, InsertionSort, ShellSort
 from random import sample
 
+class SortTester(unittest.TestCase):
+    def checkArrayAscending(self, arr):
+        for pos in range(1, len(arr)):
+            self.assertTrue(arr[pos - 1] <= arr[pos])
 
-class TestSelectionSort(unittest.TestCase):
+class TestSelectionSort(SortTester):
     def setUp(self):
         print "\nRun test for SelectionSort"
 
-    def checkArrayAscending(self, arr):
-        for pos in range(1, len(arr)):
-            self.assertTrue(arr[pos - 1] <= arr[pos])
-
     def test_sort(self):
         arr = range(10)
         SelectionSort(arr, len(arr))
@@ -27,14 +27,10 @@ class TestSelectionSort(unittest.TestCase):
         SelectionSort(arr, len(arr))
         self.checkArrayAscending(arr)
 
-class TestInsertionSort(unittest.TestCase):
+class TestInsertionSort(SortTester):
     def setUp(self):
         print "\nRun test for InsertionSort"
 
-    def checkArrayAscending(self, arr):
-        for pos in range(1, len(arr)):
-            self.assertTrue(arr[pos - 1] <= arr[pos])
-
     def test_sort(self):
         arr = range(10)
         InsertionSort(arr, len(arr))
@@ -49,13 +45,9 @@ class TestInsertionSort(unittest.TestCase):
         InsertionSort(arr, len(arr))
         self.checkArrayAscending(arr)
 
-class TestShellSort(unittest.TestCase):
+class TestShellSort(SortTester):
     def setUp(self):
         print "\nRun test for ShellSort"
-
-    def checkArrayAscending(self, arr):
-        for pos in range(1, len(arr)):
-            self.assertTrue(arr[pos - 1] <= arr[pos])
 
     def test_sort(self):
         arr = range(10)
