@@ -1,7 +1,7 @@
 #!/usr/bin/python2
 
 import unittest
-from priority_queue import UnorderedPriorityQueue
+from priority_queue import UnorderedPriorityQueue, BinaryHeapPQ
 
 class TestUnorderedPQ(unittest.TestCase):
     def setUp(self):
@@ -9,6 +9,65 @@ class TestUnorderedPQ(unittest.TestCase):
 
     def test_pq(self):
         pq = UnorderedPriorityQueue()
+        self.assertEqual(pq.Size(), 0)
+        self.assertTrue(pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), None)
+        pq.Insert(12)
+        self.assertEqual(pq.Size(), 1)
+        self.assertTrue(not pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), 12)
+        self.assertEqual(pq.Size(), 0)
+        self.assertTrue(pq.IsEmpty())
+        pq.Insert(12)
+        pq.Insert(12)
+        pq.Insert(2)
+        pq.Insert(3)
+        pq.Insert(4)
+        pq.Insert(70)
+        pq.Insert(700)
+        self.assertEqual(pq.Size(), 7)
+        self.assertTrue(not pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), 700)
+        self.assertEqual(pq.Size(), 6)
+        self.assertTrue(not pq.IsEmpty())
+        pq.Insert(10)
+        self.assertEqual(pq.Size(), 7)
+        self.assertTrue(not pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), 70)
+        self.assertEqual(pq.Size(), 6)
+        self.assertTrue(not pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), 12)
+        self.assertEqual(pq.Size(), 5)
+        self.assertTrue(not pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), 12)
+        self.assertEqual(pq.Size(), 4)
+        self.assertTrue(not pq.IsEmpty())
+        pq.Insert(14)
+        self.assertEqual(pq.Size(), 5)
+        self.assertTrue(not pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), 14)
+        self.assertEqual(pq.Size(), 4)
+        self.assertTrue(not pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), 10)
+        self.assertEqual(pq.Size(), 3)
+        self.assertTrue(not pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), 4)
+        self.assertEqual(pq.Size(), 2)
+        self.assertTrue(not pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), 3)
+        self.assertEqual(pq.Size(), 1)
+        self.assertTrue(not pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), 2)
+        self.assertEqual(pq.Size(), 0)
+        self.assertTrue(pq.IsEmpty())
+        self.assertEqual(pq.DelMax(), None)
+        
+class TestBinaryHeapPQ(unittest.TestCase):
+    def setUp(self):
+        print "\nRun test for BinaryHeapPriorityQueue"
+
+    def test_pq(self):
+        pq = BinaryHeapPQ()
         self.assertEqual(pq.Size(), 0)
         self.assertTrue(pq.IsEmpty())
         self.assertEqual(pq.DelMax(), None)
